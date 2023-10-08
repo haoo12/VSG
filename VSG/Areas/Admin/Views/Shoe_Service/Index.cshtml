@@ -1,0 +1,87 @@
+﻿@model IEnumerable<VSG.Models.Shoe_Service>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <!-- Main content -->
+    <section class="content my-2">
+
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-md-6">
+                        <strong>DANH SÁCH CÁC SẢN PHẨM</strong>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <a href="@Url.Action("Create", "Shoe_Service", new {area ="Admin"})" class="btn btn-sm btn-success"><i class="fas fa-plus"></i>Thêm</a>
+                        <a href="@Url.Action("Trash", "Shoe_Service", new {area ="Admin"})" class="btn btn-sm btn-danger"><i class="fa-solid fa-backward"></i>Thùng Rác</a>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Tên Danh Mục</th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Category.CategoryName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Title)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Price)
+                            </th>
+                            @*<th>
+                                    @Html.DisplayNameFor(model => model.Description)
+                                </th>*@
+                            <th>
+                                @Html.DisplayNameFor(model => model.Image)
+                            </th>
+                            <th></th>
+                        </tr>
+
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Category.CategoryName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Title)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Price)
+                                </td>
+                                @*<td>
+                                        @Html.DisplayFor(modelItem => item.Description)
+                                    </td>*@
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Image)
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("Edit", "Shoe_Service", new {id=item.Id, area ="Admin"})" class="btn btn-sm btn-success"><i class="fas fa-eye "></i>Edit</a>
+                                    <a href="@Url.Action("Details", "Shoe_Service", new {id=item.Id, area = "Admin"})" class="btn btn-sm btn-success"><i class="fas fa-edit "></i>Details</a>
+                                    <a href="@Url.Action("Delete", "Shoe_Service", new {id=item.Id, area = "Admin"})" class="btn btn-sm btn-success"><i class="fas fa-trash "></i>Delete</a>
+
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+
+                </table>
+
+            </div>
+        </div>
+    </section>
+    <!-- /.content -->
+</div>

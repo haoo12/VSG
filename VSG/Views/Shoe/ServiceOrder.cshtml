@@ -1,0 +1,115 @@
+﻿
+@model VSG.Models.DatDichvu
+
+@{
+    ViewBag.Title = "ServiceOrder";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h3>Đặt Dịch Vụ</h3>
+                <div class="row contact-info-wrap">
+                    <div class="col-md-3">
+                        <p><span><i class="icon-location"></i></span> Quận 9  <br> THÀNH PHỐ HỒ CHÍ MINH </p>
+                    </div>
+                    <div class="col-md-3">
+                        <p><span><i class="icon-phone3"></i></span> <a href="tel://1234567920">+ 0829808567 </a></p>
+                    </div>
+                    <div class="col-md-3">
+                        <p><span><i class="icon-paperplane"></i></span> <a href="mailto:info@yoursite.com">DACS@gmail.com </a></p>
+                    </div>
+                    <div class="col-md-3">
+                        <p><span><i class="icon-globe"></i></span> <a href="#">yoursite.com</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="contact-wrap">
+                    <h3>Đặt Dịch Vụ</h3>
+                    <form action="#" class="contact-form">
+                        <div class="row">
+
+                            <div class="w-100"></div>
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.HoTen, "Họ && Tên", htmlAttributes: new { @class = "col-md-2 control-label" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.HoTen, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-100"></div>
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.SDT, "Số điện thoại", htmlAttributes: new { @class = "col-md-2 control-label" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.SDT, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.SDT, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="w-100"></div>
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.NgayDat, "Ngày Đặt", htmlAttributes: new { @class = "col-md-2 control-label" })
+                                    <div class="col-md-10">
+
+                                        <td height="35" style="text-align: center"><input name="date" type="date" id="date"></td>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-100"></div>
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Id, "Mã dịch vụ", htmlAttributes: new { @class = "col-md-2 control-label" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Id, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Id, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-100"></div>
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Title, "Tên dịch vụ", htmlAttributes: new { @class = "col-md-2 control-label" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-100"></div>
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.GhiChu, "Ghi chú", htmlAttributes: new { @class = "col-md-2 control-label" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.GhiChu, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.GhiChu, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-100"></div>
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <input type="submit" value="Đặt Dịch Vụ" class="btn btn-primary">
+                                </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

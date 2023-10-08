@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/Content/css/css/style.css"   >
+    <title>sanpham</title>
+</head>
+<body>
+    <div class="headline">
+        <h3>Sản Phẩm CỦA MONO</h3>
+    </div>
+    <section class="product">
+        <div class="container">
+            <div class="product-items">
+                <div class="product-item">
+                    <img src="~/Content/Image/img/shopping (1).jpg" alt="">
+                    <div class="product-item-text">
+                        <p><span>199.000</span><sup>vnd</sup></p>
+                        <h1 style="font-weight: bold;font-size: 15px;">tẩy trắng giày PODRO</h1>
+                    </div>
+                    <button>thêm vào giỏ hàng</button>
+                </div>
+                <div class="product-item">
+                    <img src="~/Content/Image/img/shopping (2).jpg" alt="">
+                    <div class="product-item-text">
+                        <p><span>299.000</span><sup>vnd</sup></p>
+                        <h1 style="font-weight: bold;font-size: 15px;">dung dịch vệ sinh giày</h1>
+                    </div>
+                    <button>thêm vào giỏ hàng</button>
+                </div>
+                <div class="product-item">
+                    <img src="~/Content/Image/img/shopping (3).jpg" alt="">
+                    <div class="product-item-text">
+                        <p><span>399.000</span><sup>vnd</sup></p>
+                        <h1 style="font-weight: bold;font-size: 15px;">vệ sinh giày da</h1>
+                    </div>
+                    <button>thêm vào giỏ hàng</button>
+                </div>
+                <div class="product-item">
+                    <img src="~/Content/Image/img/shopping (4).jpg" alt="">
+                    <div class="product-item-text">
+                        <p><span>499.000</span><sup>vnd</sup></p>
+                        <h1 style="font-weight: bold;font-size: 15px;">máy khử mùi giày</h1>
+                    </div>
+                    <button>thêm vào giỏ hàng</button>
+                </div>
+                <div class="product-item">
+                    <img src="~/Content/Image/img/shopping (5).jpg" alt="">
+                    <div class="product-item-text">
+                        <p><span>599.000</span><sup>vnd</sup></p>
+                        <h1 style="font-weight: bold;font-size: 15px;">keo dán giày</h1>
+                    </div>
+                    <button>thêm vào giỏ hàng</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="giohang">
+        <h2>GIỎ HÀNG</h2>
+        <form>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sản phẩm</th>
+                        <th>Giá</th>
+                        <th>Số lượng</th>
+                        <th>Chọn</th>
+                    </tr>
+                </thead>
+                <tbody>
+                     
+                </tbody>
+            </table>
+            <div style="text-align:right;" class="gia">
+                <p style="font-weight:bold;">Tổng tiền:<span>Giá:0</span>vnd</p>
+            </div>
+            @*<a href="@Url.Action("Payment","Home")">Thanh toán</a><br />*@
+
+            <a href="@Url.Action("Payment","Home")">Thanh toán</a>
+        </form>
+    </section>
+    <script src="~/Content/js/script.js"></script>
+</body>
+</html>

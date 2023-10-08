@@ -1,0 +1,97 @@
+﻿@model IEnumerable<VSG.Models.SanPham>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <!-- Main content -->
+    <section class="content my-2">
+
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-md-6">
+                        <strong>DANH SÁCH CÁC SẢN PHẨM</strong>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <a href="@Url.Action("Create", "SanPhams", new {area ="Admin"})" class="btn btn-sm btn-success"><i class="fas fa-plus"></i>Thêm</a>
+                        <a href="@Url.Action("LoaiSPDaXoa")" class="btn btn-danger btn-icon-split">
+                            <span class="icon text-white-50">
+                                <i class="fa-solid fa-trash"></i>
+                            </span>
+                            <span class="text">Danh Mục Sản Phẩm Đã Xóa</span>
+                        </a>
+
+                    </div>
+                   
+
+                </div>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Loai.TenLoai)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.TenSanPham)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Price)
+                            </th>
+                            @*<th>
+                                    @Html.DisplayNameFor(model => model.Description)
+                                </th>*@
+                            <th>
+                                @Html.DisplayNameFor(model => model.Image)
+                            </th>
+                            <th></th>
+                        </tr>
+
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Loai.TenLoai)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TenSanPham)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Price)
+                                </td>
+                                @*<td>
+                                        @Html.DisplayFor(modelItem => item.Description)
+                                    </td>*@
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Image)
+                                </td>
+                                <td>
+                                    <a href="@Url.Action("Edit", "SanPhams", new {id=item.MaSanPham, area ="Admin"})" class="btn btn-sm btn-success"><i class="fas fa-eye "></i>Edit</a>
+                                    <a href="@Url.Action("Details", "SanPhams", new {id=item.MaSanPham, area = "Admin"})" class="btn btn-sm btn-success"><i class="fas fa-edit "></i>Details</a>
+                                    <a href="@Url.Action("Delete", "SanPhams", new {id=item.MaSanPham, area = "Admin"})" class="btn btn-sm btn-success"><i class="fas fa-trash "></i>Delete</a>
+
+                                    @*@Html.ActionLink("Edit", "", new { id = item.Id }, new { @class = "btn btn-sm btn-success" }) |
+                                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+
+                </table>
+
+            </div>
+        </div>
+    </section>
+    <!-- /.content -->
+</div>

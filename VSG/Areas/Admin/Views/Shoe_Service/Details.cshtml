@@ -1,0 +1,97 @@
+﻿@model VSG.Models.Shoe_Service
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <!-- Main content -->
+    <section class="content my-2">
+
+        <!-- Default box -->
+        <div class="card">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-md-6">
+                        <strong>CHI TIẾT CÁC SẢN PHẨM</strong>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <a href="@Url.Action("Edit", "Shoe_Service", new { id = Model.Id })" class="btn btn-sm btn-success"><i class="fas fa-edit"></i>Edit</a>
+
+                        @*<button class="btn btn-sm btn-success" type="submit" name="create"><i class="fas fa-save"></i> Lưu </button>*@
+                        <a href="@Url.Action("Index", "Shoe_Service")" class="btn btn-sm btn-danger"><i class="fas fa-long-arrow-alt-left "></i>Back to list</a>
+
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="card-body my-3">
+                <table class="table table-bordered">
+                    <tr>
+                        <th style="width:120px">
+                            Tên trường
+                        </th>
+                        <th>
+                            Nội dung
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.Category.CategoryName)
+
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Category.CategoryName)
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.Title)
+
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Title)
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.Price)
+
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Price)
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.Description)
+
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Description)
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.Image)
+
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Image)
+
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+        </div>
+    </section>
+    <!-- /.content -->
+</div>

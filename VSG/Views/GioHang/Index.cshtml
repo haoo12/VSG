@@ -1,0 +1,200 @@
+﻿@*@model IEnumerable<VSG.Models.CartItem>
+    @{
+        ViewBag.Title = "Index";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+        var ds = ViewBag.DanhSach;
+    }
+    <h2 style="text-align: center; color: mediumvioletred; font-size: 30px; font-family: revert; padding: 30px 30px; font-weight: bold;">THÔNG TIN GIỎ HÀNG</h2>
+
+    <div>
+
+            <table style="color:black;font-size:20px;">
+                <tr style="text-align:center; font-weight:bold;">
+                    <td> Tên  </td>
+                    <td> Ảnh  </td>
+                    <td> Số lượng </td>
+                    <td> Đơn giá </td>
+                    <td style="padding-left: 49px;"> Thành tiền </td>
+                    <td width="50px"></td>
+                    <td width="50px"></td>
+                    <td width="50px"></td>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr style="text-align:center; font-weight:bold">
+                        <td style="width:30px;top: 0px"> @item.tenSP </td>
+                        <td><img src="~/Content/Image/img/@item.AnhSP" style="width: 300px; height: 380px; padding: 30px; " /> </td>
+                        @using (Html.BeginForm("UpdateCart", "GioHang", new { id = item.Id }))
+                        {
+                            <td>
+                                <input type="number" min="1" name="txtQuantity" value="@item.SoLuong" style="background-color:yellow" />
+                            </td>
+                            <td> @String.Format("{0:0,0}", item.Gia) </td>
+                            <td> @String.Format("{0:0,0}", item.tongTien) </td>
+                            <td><a href="@Url.Action("Details","SanPham",new { id = item.Id })"> Chi tiết </a></td>
+                            <td> @Html.ActionLink("Xóa", "RemoveCartItem", new { id = item.Id })</td>
+                            <td> <input type="submit" value="Cập nhật" /></td>
+                        }
+
+                    </tr>
+                }
+                <tr style="font-weight:bold; text-align:right; color:red">
+                    <td colspan="5"> Số lượng : @ViewBag.Tongsoluong </td>
+                    <td colspan="5"> Tổng tiền: @String.Format("{0:0,0}", ViewBag.Tongtien) VNĐ</td>
+                </tr>
+                <tr style="font-weight:bold; color:blue; text-align:right">
+                    <td colspan="9">
+                        @Html.ActionLink("Xóa Giỏ Hàng", "Delete")
+                    </td>
+                </tr>
+                <tr style="font-weight:bold; color:blue; text-align:right">
+                    <td colspan="9" align="center">
+                        @Html.ActionLink("ĐẶT HÀNG", "Order", "GioHang")
+                    </td>
+
+                </tr>
+            </table>
+
+    </div>
+    <div class="section-group">
+        @using (Html.BeginForm("Order", "GioHang", FormMethod.Post))
+        {
+            <div class="form-group">
+                <label>Người nhận</label>
+                <input name="shipName" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Điện Thoại</label>
+                <input name="mobile" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Địa chỉ</label>
+                <input name="address" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input name="email" class="form-control" />
+            </div>
+            <button type="submit" class="btn">Đặt hàng</button>
+        }
+    </div>
+    <a class="btn btn-success btn-group-lg" href="@Url.Action("Index","SanPham")">
+        Tiếp Tục Mua Hàng
+    </a>*@
+
+
+@model IEnumerable<VSG.Models.CartItem>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2 style="text-align: center; color: mediumvioletred; font-size: 30px; font-family: revert; padding: 30px 30px; font-weight: bold;">THÔNG TIN GIỎ HÀNG</h2>
+
+<section class="h-100" style="background-color: #eee;">
+    <div class="container h-100 py-5">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-10">
+
+                <div class="d-flex justify-content-between align-items-center mb-4">
+
+                    <div>
+                        <p class="mb-0">
+
+                            </a>
+                        </p>
+                    </div>
+                </div>
+                @foreach (var item in Model)
+                {
+                    <div class="card rounded-3 mb-4">
+                        <div class="card-body p-4">
+                            <div class="row d-flex justify-content-between align-items-center">
+                                <div class="col-md-2 col-lg-2 col-xl-2">
+                                    <img src="~/Content/Image/img/@item.AnhSP"
+                                         class="img-fluid rounded-3" alt="Cotton T-shirt">
+                                </div>
+                                <div class="col-md-3 col-lg-3 col-xl-3">
+                                    <p class="lead fw-normal mb-2"> @item.tenSP</p>
+
+                                </div>
+                                <td> @Html.ActionLink("Xóa", "RemoveCartItem", new { id = item.Id })</td>
+                                @using (Html.BeginForm("UpdateCart", "GioHang", new { id = item.Id }))
+                                {
+                                    <td>
+                                        <input type="number" min="1" name="txtQuantity" value="@item.SoLuong" style="background-color:#eee" />
+                                    </td>
+                                    @*<td> @String.Format("{0:0,0}", item.Gia) </td>*@
+                                    <td> @String.Format("{0:0,0}", item.tongTien) </td>
+
+                                    <td> @Html.ActionLink("Xóa", "RemoveCartItem", new { id = item.Id })</td>
+                                    <td> <input type="submit" value="Cập nhật" /></td>
+                                }
+                                <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                                    <h5 class="mb-0">@String.Format("{0:0,0}", item.Gia) VNĐ</h5>
+                                </div>
+                                <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                                    <a href="#!" class="text-danger"><i class="fas fa-trash fa-lg"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                <div class="card mb-4">
+                    <div class="card-body p-4 d-flex flex-row">
+                        <div class="form-outline flex-fill">
+                            <input type="text" id="form1" class="form-control form-control-lg" />
+                            <label class="form-label" for="form1">Mã Giảm Giá </label>
+                        </div>
+                        <button type="button" class="btn btn-outline-warning btn-lg ms-3">Cập Nhật</button>
+                    </div>
+                </div>
+
+                <tr style="font-weight:bold; text-align:right; color:red">
+                    <td colspan="5"> <strong><span style="font-weight: 900;">Số lượng : @ViewBag.Tongsoluong </span></strong></td>&ensp;
+                    <td colspan="5"> <strong><span style="font-weight: 900;">Tổng tiền: @String.Format("{0:0,0}", ViewBag.Tongtien) VNĐ</span></strong> </td>&ensp;
+                </tr>
+                <tr style="font-weight:bold; color:blue; text-align:right">
+                    <td colspan="9">
+                        <u>@Html.ActionLink("Xóa Giỏ Hàng", "Delete")</u>
+                    </td>
+                </tr>
+                @*<a class="btn btn-success btn-group-lg" href="@Url.Action("Orderr","GioHang")">
+                        Thanh Toán
+                    </a>
+
+                    <a class="btn btn-success btn-group-lg" href="@Url.Action("Index","SanPham")">
+                        Tiếp Tục Mua Hàng
+                    </a>*@
+                <div class="section-group">
+                    @using (Html.BeginForm("Order", "GioHang", FormMethod.Post))
+                    {
+                        <div class="form-group">
+                            <label>Người nhận</label>
+                            <input name="shipName" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label>Điện Thoại</label>
+                            <input name="mobile" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label>Địa chỉ</label>
+                            <input name="address" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input name="email" class="form-control" />
+                        </div>
+                        <button type="submit" class="btn">Đặt hàng</button>
+                    }
+                </div>
+                <a class="btn btn-success btn-group-lg" href="@Url.Action("Index","SanPham")">
+                    Tiếp Tục Mua Hàng
+                </a>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
